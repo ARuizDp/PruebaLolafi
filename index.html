@@ -13,8 +13,8 @@
     }
     .sidebar {
       width: 200px;
-      background-color: #2e3b4e;
-      color: white;
+      background-color: #d9e1ec; /* Color más claro */
+      color: #333;
       padding: 20px;
     }
     .sidebar h2 {
@@ -29,7 +29,7 @@
       margin: 10px 0;
     }
     .sidebar ul li a {
-      color: white;
+      color: #333;
       text-decoration: none;
       padding: 5px;
       display: block;
@@ -37,12 +37,13 @@
     .sidebar ul li.active a {
       font-weight: bold;
       text-decoration: underline;
-      background-color: #3f4e63;
+      background-color: #c0cedd;
       border-radius: 4px;
     }
     .content {
       flex: 1;
       padding: 20px;
+      position: relative;
     }
     table {
       border-collapse: collapse;
@@ -64,12 +65,48 @@
     }
     .welcome {
       text-align: center;
-      margin-top: 100px;
+      margin-top: 50px;
+      position: relative;
     }
-    .welcome img {
-      margin-top: 20px;
+    .welcome img.logo {
+      display: block;
+      margin: 20px auto;
       width: 150px;
       height: auto;
+    }
+    .welcome img.side {
+      width: 100px;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .welcome img.left {
+      left: 0;
+    }
+    .welcome img.right {
+      right: 0;
+    }
+    .contacto {
+      text-align: center;
+      color: white;
+    }
+    .contacto::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('/ruta/a/tu/imagen_licitacion.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.65;
+      z-index: -1;
+    }
+    .contacto img {
+      width: 200px;
+      height: auto;
+      background-color: #d9e1ec; /* mismo color que el menú */
+      padding: 10px;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -80,7 +117,6 @@
     <ul>
       <li class="active" id="inicio-link"><a href="#" onclick="mostrarSeccion('inicio')">Inicio</a></li>
       <li id="contratos-link"><a href="#" onclick="mostrarSeccion('contratos')">Contratos</a></li>
-      <li id="informes-link"><a href="#" onclick="mostrarSeccion('informes')">Informes</a></li>
       <li id="contacto-link"><a href="#" onclick="mostrarSeccion('contacto')">Contacto</a></li>
     </ul>
   </div>
@@ -88,8 +124,10 @@
   <div class="content">
     <div id="inicio" class="seccion">
       <div class="welcome">
+        <img src="/ruta/a/primera_imagen.png" alt="Lateral Izquierdo" class="side left">
         <h1>Bienvenido a Lolafi.</h1>
-        <img src="https://via.placeholder.com/150" alt="Logo provisional">
+        <img src="/ruta/a/logo.png" alt="Logo" class="logo">
+        <img src="/ruta/a/segunda_imagen.png" alt="Lateral Derecho" class="side right">
       </div>
     </div>
 
@@ -121,30 +159,21 @@
       </table>
     </div>
 
-    <div id="informes" class="seccion" style="display:none;">
-      <h1>Informes</h1>
-      <p>Contenido de informes próximamente.</p>
-    </div>
-
     <div id="contacto" class="seccion" style="display:none;">
-      <h1>Contacto</h1>
-      <p>Datos de contacto próximamente.</p>
+      <div class="contacto">
+        <h1>Contactanos</h1>
+        <img src="/ruta/a/segunda_imagen_modificada.png" alt="Imagen contacto">
+      </div>
     </div>
   </div>
 
   <script>
     function mostrarSeccion(id) {
-      // Ocultar todas las secciones
       const secciones = document.querySelectorAll('.seccion');
       secciones.forEach(sec => sec.style.display = 'none');
-
-      // Quitar clase active de todos los enlaces
       const items = document.querySelectorAll('.sidebar ul li');
       items.forEach(item => item.classList.remove('active'));
-
-      // Mostrar la sección seleccionada
       document.getElementById(id).style.display = 'block';
-      // Resaltar el menú activo
       document.getElementById(id + '-link').classList.add('active');
     }
   </script>
