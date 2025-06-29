@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resultados de Contratos</title>
+  <title>Lolafi</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       display: flex;
+      min-height: 100vh;
     }
     .sidebar {
       width: 200px;
       background-color: #2e3b4e;
       color: white;
       padding: 20px;
-      min-height: 100vh;
     }
     .sidebar h2 {
       font-size: 18px;
@@ -31,6 +31,14 @@
     .sidebar ul li a {
       color: white;
       text-decoration: none;
+      padding: 5px;
+      display: block;
+    }
+    .sidebar ul li.active a {
+      font-weight: bold;
+      text-decoration: underline;
+      background-color: #3f4e63;
+      border-radius: 4px;
     }
     .content {
       flex: 1;
@@ -54,46 +62,92 @@
     tr:hover {
       background-color: #e0f7fa;
     }
+    .welcome {
+      text-align: center;
+      margin-top: 100px;
+    }
+    .welcome img {
+      margin-top: 20px;
+      width: 150px;
+      height: auto;
+    }
   </style>
 </head>
 <body>
+
   <div class="sidebar">
     <h2>Menú</h2>
     <ul>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Contratos</a></li>
-      <li><a href="#">Informes</a></li>
-      <li><a href="#">Contacto</a></li>
+      <li class="active" id="inicio-link"><a href="#" onclick="mostrarSeccion('inicio')">Inicio</a></li>
+      <li id="contratos-link"><a href="#" onclick="mostrarSeccion('contratos')">Contratos</a></li>
+      <li id="informes-link"><a href="#" onclick="mostrarSeccion('informes')">Informes</a></li>
+      <li id="contacto-link"><a href="#" onclick="mostrarSeccion('contacto')">Contacto</a></li>
     </ul>
   </div>
 
   <div class="content">
-    <h1>Resultados de Contratos</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Nº de expediente y título</th>
-          <th>Tipo de contrato</th>
-          <th>Órgano de contratación</th>
-          <th>Importe licitación</th>
-          <th>Importe adjudicación</th>
-          <th>Fecha fin de presentación</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>CONTR 2025 0000389635 - CURSO DIGITALIZACIÓN DE DOCUMENTOS</td>
-          <td>Servicios</td>
-          <td>Agencia de Vivienda y Rehabilitación de Andalucía (AVRA)</td>
-          <td>14.000,00 €</td>
-          <td>-</td>
-          <td>23/07/2025</td>
-          <td>Publicada</td>
-        </tr>
-        <!-- Puedes añadir más filas aquí -->
-      </tbody>
-    </table>
+    <div id="inicio" class="seccion">
+      <div class="welcome">
+        <h1>Bienvenido a Lolafi.</h1>
+        <img src="https://via.placeholder.com/150" alt="Logo provisional">
+      </div>
+    </div>
+
+    <div id="contratos" class="seccion" style="display:none;">
+      <h1>Resultados de Contratos</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Nº de expediente y título</th>
+            <th>Tipo de contrato</th>
+            <th>Órgano de contratación</th>
+            <th>Importe licitación</th>
+            <th>Importe adjudicación</th>
+            <th>Fecha fin de presentación</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CONTR 2025 0000389635 - CURSO DIGITALIZACIÓN DE DOCUMENTOS</td>
+            <td>Servicios</td>
+            <td>Agencia de Vivienda y Rehabilitación de Andalucía (AVRA)</td>
+            <td>14.000,00 €</td>
+            <td>-</td>
+            <td>23/07/2025</td>
+            <td>Publicada</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="informes" class="seccion" style="display:none;">
+      <h1>Informes</h1>
+      <p>Contenido de informes próximamente.</p>
+    </div>
+
+    <div id="contacto" class="seccion" style="display:none;">
+      <h1>Contacto</h1>
+      <p>Datos de contacto próximamente.</p>
+    </div>
   </div>
+
+  <script>
+    function mostrarSeccion(id) {
+      // Ocultar todas las secciones
+      const secciones = document.querySelectorAll('.seccion');
+      secciones.forEach(sec => sec.style.display = 'none');
+
+      // Quitar clase active de todos los enlaces
+      const items = document.querySelectorAll('.sidebar ul li');
+      items.forEach(item => item.classList.remove('active'));
+
+      // Mostrar la sección seleccionada
+      document.getElementById(id).style.display = 'block';
+      // Resaltar el menú activo
+      document.getElementById(id + '-link').classList.add('active');
+    }
+  </script>
+
 </body>
 </html>
