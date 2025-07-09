@@ -13,7 +13,7 @@
     }
     .sidebar {
       width: 200px;
-      background-color: #d9e1ec; /* Color más claro */
+      background-color: #d9e1ec;
       color: #333;
       padding: 20px;
     }
@@ -68,14 +68,8 @@
       margin-top: 50px;
       position: relative;
     }
-    .welcome img.logo {
-      display: block;
-      margin: 20px auto;
-      width: 150px;
-      height: auto;
-    }
     .welcome img.side {
-      width: 100px;
+      width: 108px;
       height: auto;
       position: absolute;
       top: 50%;
@@ -87,9 +81,17 @@
     .welcome img.right {
       right: 0;
     }
+    .welcome img.logo {
+      display: block;
+      margin: 20px auto;
+      width: 150px;
+      height: auto;
+    }
     .contacto {
       text-align: center;
-      color: white;
+      color: black;
+      position: relative;
+      z-index: 1;
     }
     .contacto::before {
       content: "";
@@ -100,13 +102,6 @@
       background-size: cover;
       opacity: 0.65;
       z-index: -1;
-    }
-    .contacto img {
-      width: 200px;
-      height: auto;
-      background-color: #d9e1ec; /* mismo color que el menú */
-      padding: 10px;
-      border-radius: 10px;
     }
   </style>
 </head>
@@ -127,7 +122,7 @@
       <div class="welcome">
         <img src="https://raw.githubusercontent.com/ARuizDp/imagenes-lolafi/main/licitaciones.jpg" alt="Lateral Izquierdo" class="side left">
         <h1>Bienvenido a Lolafi.</h1>
-        <img src="https://raw.githubusercontent.com/ARuizDp/imagenes-lolafi/main/LICITACIONES%202.jpg" alt="Logo" class="logo">
+        <img src="https://raw.githubusercontent.com/ARuizDp/imagenes-lolafi/main/iconololafi.png" alt="Logo" class="logo">
         <img src="https://raw.githubusercontent.com/ARuizDp/imagenes-lolafi/main/LICITACIONES%202.jpg" alt="Lateral Derecho" class="side right">
       </div>
     </div>
@@ -165,7 +160,6 @@
     <div id="contacto" class="seccion" style="display:none;">
       <div class="contacto">
         <h1>Contactanos</h1>
-        <img src="https://raw.githubusercontent.com/ARuizDp/imagenes-lolafi/main/LICITACIONES%202.jpg" alt="Imagen contacto">
       </div>
     </div>
   </div>
